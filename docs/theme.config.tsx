@@ -32,6 +32,10 @@ const logo = (
         );
         mask-size: 400%;
         mask-position: 0%;
+        transition:
+          mask-position 1s ease,
+          -webkit-mask-position 1s ease;
+        opacity: 1;
       }
       span:hover {
         mask-position: 100%;
