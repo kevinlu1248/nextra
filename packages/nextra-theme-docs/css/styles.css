@@ -149,7 +149,7 @@ input[type='search'] {
     animation: nextra-fadein 1s ease 0.2s forwards;
   }
   [data-toggle-animation='hide'] button {
-    opacity: 0;
+    opacity: 1;
     animation: nextra-fadein2 1s ease 0.2s forwards;
   }
 }
