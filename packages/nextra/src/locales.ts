@@ -78,7 +78,7 @@ export function locales(request: NextRequest) {
     if (finalLocale !== nextUrl.defaultLocale) {
       const url = addBasePath(
         addLocale(
-          `${nextUrl.pathname}${nextUrl.search}`,
+          normalizePath(`${nextUrl.pathname}${nextUrl.search}`),
           finalLocale,
           nextUrl.defaultLocale
         )
@@ -94,7 +94,7 @@ export function locales(request: NextRequest) {
   if (!pathname.endsWith('.' + finalLocale)) {
     const url = addBasePath(
       addLocale(
-        `${pathname}.${finalLocale}${nextUrl.search}`,
+        normalizePath(`${pathname}.${finalLocale}${nextUrl.search}`),
         finalLocale,
         nextUrl.defaultLocale
       )
@@ -107,4 +107,7 @@ export function withLocales(middleware: any) {
   return (...args: any[]) => {
     return locales(args[0]) || middleware(...args)
   }
+}
+function normalizePath(path) {
+  return path.replace(/\\/g, '/');
 }
